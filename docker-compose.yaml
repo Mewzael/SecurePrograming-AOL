@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  php-apache:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000"
+    volumes:
+      - /:/home/note
+    container_name: Note_Saver
+    restart: always
+    command: php -S 0.0.0.0:5000 -t /home/note
