@@ -11,23 +11,32 @@ body {
     background-color: #f0f0f0;
     color: #333;
     font-size: 16px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 header {
     background-color: #1E90FF;
     color: #FFFFFF;
     text-align: center;
-    padding: 20px;
+    padding: 28px;
+}
+
+.top-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 header h1 {
-    font-size: 36px;
+    font-size: 20px;
+    text-align: left;
 }
 
 nav {
     background-color: #1E90FF;
-    text-align: center;
-    padding: 10px 0;
+    text-align: right;
 }
 
 nav ul {
@@ -50,7 +59,14 @@ nav a:hover {
     text-decoration: underline;
 }
 
+.header-buttons a {
+    color: #FFFFFF;
+    text-decoration: none;
+    margin-left: 20px;
+}
+
 main {
+    flex-grow: 1;
     padding: 20px;
 }
 
