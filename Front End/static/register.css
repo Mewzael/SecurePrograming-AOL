@@ -1,0 +1,120 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:300);
+
+* {
+    font-family: "Roboto", sans-serif;
+}
+
+register-page {
+    width: 360px;
+    padding: 8% 0 0;
+    margin: auto;
+}
+
+h2 {
+    text-align: center;
+    margin: 0;
+    color: #333;
+    padding-bottom: 25px;
+}
+
+form {
+    position: relative;
+    background: #FFFFFF;
+    max-width: 500px;
+    width: 100%;
+    height: 550px;
+    margin: 100px;
+    padding: 45px;
+    text-align: left;
+    box-shadow: 10px 10px 10px 10px rgba(0, 0, 0, 0.2);
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 10px;
+}
+
+label {
+    display: block;
+    margin: 10px 0;
+    color: #333;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"] {
+  outline: 0;
+  background: #f2f2f2;
+  width: 100%;
+  border: 1px solid #ccc;
+  margin: 0 0 15px;
+  padding: 15px;
+  box-sizing: border-box;
+  font-size: 14px;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 10px;
+}
+
+input[type="submit"] {
+    margin: 0 auto;
+    text-transform: uppercase;
+    outline: 0;
+    background: #1E90FF;
+    width: 500px;
+    height: 50px;
+    border: 0;
+    padding: 15px;
+    color: #FFFFFF;
+    font-size: 14px;
+    cursor: pointer;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px gray;
+}
+
+input[type="submit"]:hover {
+    background-color: #0088ff;
+    font-size: 15px;
+}
+
+.login-link {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 14px;
+  }
+  
+.login-link a {
+    text-decoration: none;
+    color: #1E90FF;
+    font-weight: bold;
+    font-size: 14px
+  }
+  
+.login-link a:hover {
+    text-decoration: underline;
+    font-size: 15px;
+  }
+
+/* Styling for links */
+a {
+    margin: 15px 0 0;
+    color: #b3b3b3;
+    font-size: 12px;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: #b3b3b3;
+    text-decoration: none;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
