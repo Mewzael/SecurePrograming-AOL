@@ -1,8 +1,11 @@
+<?php
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
     <title>ConnectThread</title>
-    <link rel="stylesheet" type="text/css" href="../static/index.css"> <!-- Link to your main CSS file -->
+    <link rel="stylesheet" href="/static/index.css">
 </head>
 <body>
     <header>
@@ -10,14 +13,14 @@
             <h1>🅒🅞🅝🅝🅔🅒🅣🅣🅗🅡🅔🅐🅓</h1>
             <nav>
                 <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="hot.html">Hot</a></li>
-                    <li><a href="categories.html">Categories</a></li>
+                    <li><a href="index.php">Home</a></li>
+                    <li><a href="hot.php">Hot</a></li>
+                    <li><a href="categories.php">Categories</a></li>
                 </ul>
             </nav>
             <div class="header-buttons">
-                <a href="login.html">Login</a>
-                <a href="registration.html">Register</a>
+                <a href="login.php">Login</a>
+                <a href="registration.php">Register</a>
             </div>
         </div>
     </header>

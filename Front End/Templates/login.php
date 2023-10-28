@@ -1,3 +1,13 @@
+<?php
+include "../../Back End/database.php";
+session_start();
+
+if (isset($_SESSION['auth']) && $_SESSION['auth'] === 1) {
+    header("Location: index.php");
+    exit();
+}
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,3 +34,25 @@
     </form>
 </body>
 </html>
+
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $username = $_POST["username"];
+    $password = $_POST["password"];
+
+    // Modify this part to use MySQL for authentication
+    $sql = "SELECT * FROM users WHERE username = '$username'";
+    $result = mysqli_query($conn, $sql);
+
+    if (mysqli_num_rows($result) == 1) {
+        $row = mysqli_fetch_assoc($result);
+        if (password_verify($password, $row['password'])) {
+            $_SESSION["auth"] = 1;
+            header("Location: success.php"); // Redirect to success page
+            exit();
+        }
+    }
+    header("Location: error.php"); // Redirect to error page
+    exit();
+}
+?>
