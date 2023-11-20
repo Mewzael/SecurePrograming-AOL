@@ -79,6 +79,29 @@ main {
 
 .intro h2 {
     font-size: 24px;
+    text-align: left;
+}
+
+.create-thread-button {
+    padding: 10px 20px;
+    background-color: #1E90FF;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    float: right;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+}
+
+.create-thread-button:hover {
+    background-color: #0088ff; /* Change the color on hover */
+}
+
+.intro-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Align items vertically in the center */
+    height: 100%;
 }
 
 .features {
@@ -104,12 +127,16 @@ ul {
     flex-direction: column;
     background-color: #f8f8f8;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
 }
 
 .forum-title {
     background-color: #1E90FF; /* Your theme color */
     padding: 10px;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
 }
 
 .forum-title h2 {
