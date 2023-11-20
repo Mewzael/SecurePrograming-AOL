@@ -4,6 +4,8 @@ include "../Back End/database.php";
 
 global $db;
 
+session_start();
+
 if (isset($_SESSION['auth']) && $_SESSION['auth'] === 1) {
     header("Location: index.php");
     exit();
@@ -20,11 +22,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $result = $stmt->get_result();
     $db->close();
     $row = $result->fetch_assoc();
-    echo("<script>console.log('PHP: " . json_encode($row['password']) . "');</script>");
 
     if ($row && password_verify($password, $row["password"])) {
         $_SESSION["auth"] = 1;
-        header("Location: success.php"); // Redirect to success page
+        $_SESSION["user_id"] = $row["id"];
+        echo("<script>console.log('PHP: " . json_encode($_SESSION) . "');</script>");
+        header("Location: create_thread.php"); // Redirect to success page
     } else {
         header("Location: error.php"); // Redirect to error page
         exit();
