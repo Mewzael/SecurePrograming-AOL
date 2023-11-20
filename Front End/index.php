@@ -38,25 +38,31 @@
             </ul>
         </section>
         <section class="forum">
+            <div class="forum-title">
+                <h2>Main Discussion Thread</h2>
+            </div>
             <div class="forum-box">
-                <div class="forum-title">
-                    <h2>Main Discussion Thread</h2>
-                </div>
                 <!-- Display a list of threads -->
                 <div class="thread">
                     <div class="thread-info">
-                    <h3>Thread Title 1</h3>
-                    <p>Author: User123</p>
+                        <h3>Thread Title 1</h3>
+                        <p>User123</p>
                     </div>
-                <p>Description: This is a discussion about...</p>
-                <!-- Add more details or buttons as needed -->
+                <p>This is a discussion about...</p>
                 </div>
             <div class="thread">
                 <div class="thread-info">
-                <h3>Thread Title 2</h3>
-                <p>Author: AnotherUser</p>
+                    <h3>Thread Title 2</h3>
+                    <p>AnotherUser</p>
+                </div>
+            <p>Join us to talk about...</p>
             </div>
-                <p>Description: Join us to talk about...</p>
+            <div class="thread">
+                <div class="thread-info">
+                    <h3>Thread Title 3</h3>
+                    <p>Mewz</p>
+                </div>
+            <p>what is your opinion on us...</p>
             </div>
         </div>
     </section>
