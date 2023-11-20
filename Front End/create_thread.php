@@ -11,11 +11,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_SESSION['auth']) && $_SESSIO
     // Get data from the form
     $threadTitle = $_POST["thread-title"];
     $threadContent = $_POST["thread-content"];
-    $author = $_SESSION["user_id"];; // You may replace this with the actual username of the logged-in user
+    $author = $_SESSION["user_id"];;
     $date = date("Y-m-d H:i:s");
 
-    // TODO: Insert data into the database (use prepared statements for security)
-    // Example: INSERT INTO threads (title, description, author) VALUES ('$threadTitle', '$threadDescription', '$author')
     $sql = "INSERT INTO thread (title, content, user_id, created_at) VALUES (?, ?, ?, ?)";
     $stmt = $db->prepare($sql);
     $stmt->bind_param("ssss", $threadTitle, $threadContent, $author, $date);
@@ -32,21 +30,29 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_SESSION['auth']) && $_SESSIO
 
     $stmt->close();
     $db->close();
-    // After inserting, you may redirect the user back to the forum page or display a success message
-    header("Location:  index.php");
+    header("Location: index.php");
     exit();
 }
 ?>
 
-<section class="create-thread">
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Creating Thread...</title>
+    <link rel="stylesheet" href="/static/create.css">
+</head>
+<body>
+    <section class="create-thread">
     <h2>Create a New Thread</h2>
-    <form action="create_thread.php" method="post">
-        <label for="thread-title">Title:</label>
-        <input type="text" id="thread-title" name="thread-title" required>
+        <form action="create_thread.php" method="post">
+            <label for="thread-title">Title:</label>
+            <input type="text" id="thread-title" name="thread-title" required>
 
-        <label for="thread-description">Description:</label>
-        <textarea id="thread-description" name="thread-content" required></textarea>
+            <label for="thread-description">Description:</label>
+            <textarea id="thread-description" name="thread-content" required></textarea>
 
-        <input type="submit" value="Create Thread">
-    </form>
-</section>
+            <input type="submit" value="Create Thread">
+        </form>
+    </section>
+</body>
+</html>
