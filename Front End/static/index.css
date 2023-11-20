@@ -94,6 +94,47 @@ ul {
     margin-left: 20px;
 }
 
+.forum {
+    margin-top: 20px;
+}
+
+.forum-box {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 15px;
+    background-color: #f8f8f8;
+}
+
+.forum-title {
+    background-color: #1E90FF; /* Your theme color */
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.forum-title h2 {
+    color: #fff; /* Title color */
+    margin: 0;
+}
+.thread {
+    margin-bottom: 15px;
+}
+
+.thread-info {
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+}
+
+.thread h3 {
+    color: #333;
+    margin: 0;
+}
+
+.thread p {
+    color: #777;
+    margin: 0;
+}
+
 footer {
     text-align: center;
     padding: 10px;

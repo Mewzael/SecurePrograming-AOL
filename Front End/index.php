@@ -37,6 +37,29 @@
                 <li>Join the Community</li>
             </ul>
         </section>
+        <section class="forum">
+            <div class="forum-box">
+                <div class="forum-title">
+                    <h2>Main Discussion Thread</h2>
+                </div>
+                <!-- Display a list of threads -->
+                <div class="thread">
+                    <div class="thread-info">
+                    <h3>Thread Title 1</h3>
+                    <p>Author: User123</p>
+                    </div>
+                <p>Description: This is a discussion about...</p>
+                <!-- Add more details or buttons as needed -->
+                </div>
+            <div class="thread">
+                <div class="thread-info">
+                <h3>Thread Title 2</h3>
+                <p>Author: AnotherUser</p>
+            </div>
+                <p>Description: Join us to talk about...</p>
+            </div>
+        </div>
+    </section>
     </main>
     <footer>
         <p>&copy; 2023 ConnectThread</p>
