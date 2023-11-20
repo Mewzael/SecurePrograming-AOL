@@ -12,8 +12,6 @@ if (isset($_SESSION['auth']) && $_SESSION['auth'] === 1) {
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST["username"];
     $password = $_POST["password"];
-    echo("<script>console.log('PHP: " . json_encode($username) . "');</script>");
-    echo("<script>console.log('PHP: " . json_encode($password) . "');</script>");
 
 
     // Modify this part to use MySQL for authentication
@@ -24,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $result = $stmt->get_result();
     $db->close();
     $row=$result->fetch_assoc();
-    echo("<script>console.log('PHP: " . json_encode($row) . "');</script>");
+//    echo("<script>console.log('PHP: " . json_encode($row) . "');</script>");
 
     if ($row) {
         $_SESSION["auth"] = 1;
@@ -53,9 +51,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <link rel="stylesheet" type="text/css" href="../static/login.css">
+    <link rel="stylesheet" type="text/css">
     <title>ConnectThread</title>
 </head>
 <body>
