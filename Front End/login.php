@@ -6,10 +6,10 @@ global $db;
 
 session_start();
 
-//if (isset($_SESSION['auth']) && $_SESSION['auth'] === 1) {
-//    header("Location: index.php");
-//    exit();
-//}
+if (isset($_SESSION['auth']) && $_SESSION['auth'] === 1) {
+    header("Location: index.php");
+    exit();
+}
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST["username"];
@@ -18,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $timezone = new DateTimeZone('Asia/Jakarta');
 
 
-    $query = "SELECT password, attempt, last_login_time FROM users WHERE username=?;";
+    $query = "SELECT password, attempt, last_login_time, id, username FROM users WHERE username=?;";
     $stmt = $db->prepare($query);
     $stmt->bind_param("s", $username);
     $stmt->execute();
@@ -33,6 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($row && password_verify($password, $row["password"])) {
             $_SESSION["auth"] = 1;
             $_SESSION["user_id"] = $row["id"];
+            $_SESSION["username"] = $row["username"];
             $query = "UPDATE users SET attempt = 0, last_login_time = CURRENT_TIMESTAMP WHERE username = ?;";
             $stmt = $db->prepare($query);
             $stmt->bind_param("s", $username);

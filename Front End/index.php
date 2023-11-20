@@ -48,12 +48,11 @@
         </div>
         <div class="forum-box">
             <?php
-
             include "../Back End/database.php";
 
             global $db;
 
-            $query = "SELECT title, content, username FROM thread JOIN users ON thread.user_id = users.id WHERE deleted_at IS NULL;";
+            $query = "SELECT thread_id, title, content, username, id FROM thread JOIN users ON thread.user_id = users.id WHERE deleted_at IS NULL;";
             $stmt = $db->prepare($query);
             $stmt->execute();
             $result = $stmt->get_result();
@@ -67,6 +66,11 @@
                     echo '<p>' . $row["username"] . '</p>';
                     echo '</div>';
                     echo '<p>' . $row["content"] . '</p>';
+                    if (isset($_SESSION['auth']) && $_SESSION['auth'] === 1) {
+                        if ($_SESSION['username'] == $row['username'] && $_SESSION['user_id'] == $row['id']) {
+                            echo '<a href="delete_thread.php?thread_id=' . $row['thread_id'] . '">DELETE</a>';
+                        }
+                    }
                     echo '</div>';
                 }
             }
