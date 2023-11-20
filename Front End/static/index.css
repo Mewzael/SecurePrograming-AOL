@@ -94,13 +94,13 @@ main {
 }
 
 .create-thread-button:hover {
-    background-color: #0088ff; /* Change the color on hover */
+    background-color: #0088ff;
 }
 
 .intro-content {
     display: flex;
     justify-content: space-between;
-    align-items: center; /* Align items vertically in the center */
+    align-items: center;
     height: 100%;
 }
 
@@ -132,7 +132,7 @@ ul {
 }
 
 .forum-title {
-    background-color: #1E90FF; /* Your theme color */
+    background-color: #1E90FF;
     padding: 10px;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
     border-top-left-radius: 5px;
@@ -140,7 +140,7 @@ ul {
 }
 
 .forum-title h2 {
-    color: #fff; /* Title color */
+    color: #fff;
     margin: 0;
 }
 .thread {
@@ -150,9 +150,9 @@ ul {
 .thread-info {
     padding-bottom: 5px;
     margin-bottom: 5px;
-    display: flex; /* Use flexbox */
-    justify-content: space-between; /* Align items horizontally with space in between */
-    align-items: center; /* Center-align items vertically */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .thread h3 {
