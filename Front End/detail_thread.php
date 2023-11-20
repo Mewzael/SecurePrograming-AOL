@@ -44,7 +44,7 @@ if (isset($_SESSION['auth']) && $_SESSION['auth'] === 1) {
 <body>
     <section class="create-thread">
     <h2>Edit Thread</h2>
-        <form action="update_thread.php" method="POST">
+        <form action="./update_thread.php" method="POST">
 <!--            <label for="thread-id">Thread Id:</label>-->
             <input type="hidden" id="thread-id" name="thread-id" value="<?php echo htmlspecialchars($temp['thread_id']); ?>" required>
 
