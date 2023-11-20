@@ -33,7 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_SESSION['auth']) && $_SESSIO
     $stmt->close();
     $db->close();
     // After inserting, you may redirect the user back to the forum page or display a success message
-    header("Location: forum.php");
+    header("Location:  index.php");
     exit();
 }
 ?>

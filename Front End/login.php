@@ -6,33 +6,52 @@ global $db;
 
 session_start();
 
-if (isset($_SESSION['auth']) && $_SESSION['auth'] === 1) {
-    header("Location: index.php");
-    exit();
-}
+//if (isset($_SESSION['auth']) && $_SESSION['auth'] === 1) {
+//    header("Location: index.php");
+//    exit();
+//}
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST["username"];
     $password = $_POST["password"];
+    $time_threshold = 60 * 1;
+    $timezone = new DateTimeZone('Asia/Jakarta');
 
-    $query = "SELECT * FROM users WHERE username=?;";
+
+    $query = "SELECT password, attempt, last_login_time FROM users WHERE username=?;";
     $stmt = $db->prepare($query);
     $stmt->bind_param("s", $username);
     $stmt->execute();
     $result = $stmt->get_result();
-    $db->close();
     $row = $result->fetch_assoc();
 
-    if ($row && password_verify($password, $row["password"])) {
-        $_SESSION["auth"] = 1;
-        $_SESSION["user_id"] = $row["id"];
-        echo("<script>console.log('PHP: " . json_encode($_SESSION) . "');</script>");
-        header("Location: create_thread.php"); // Redirect to success page
-    } else {
-        header("Location: error.php"); // Redirect to error page
-        exit();
+    $dbTimestamp = strtotime($row['last_login_time']);
+    $currentTimestamp = time();
+    $timeDifference = ($currentTimestamp - $dbTimestamp + 21600);
+
+    if ($timeDifference >= 60) {
+        if ($row && password_verify($password, $row["password"])) {
+            $_SESSION["auth"] = 1;
+            $_SESSION["user_id"] = $row["id"];
+            $query = "UPDATE users SET attempt = 0, last_login_time = CURRENT_TIMESTAMP WHERE username = ?;";
+            $stmt = $db->prepare($query);
+            $stmt->bind_param("s", $username);
+            $stmt->execute();
+            header("Location: index.php");
+        } else {
+            $row["attempt"] = $row["attempt"] +  1;
+            $query = "UPDATE users SET attempt = ?, last_login_time = CURRENT_TIMESTAMP WHERE username = ?;";
+            $stmt = $db->prepare($query);
+            $stmt->bind_param("is", $row['attempt'],$username);
+            $stmt->execute();
+            echo '<script>alert(\'Wrong username or password\')</script>';
+        }
+    } else if ($row['attempt'] >= 3 && $timeDifference < 60 ) {
+        echo '<script>alert(\'Too many login attemps. Please try again later\')</script>';
     }
+    $db->close();
 }
+
 ?>
 
 <!DOCTYPE html>
