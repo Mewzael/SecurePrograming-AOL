@@ -1,6 +1,6 @@
 <?php
-include "database.php";
-session_start();
+
+include "../Back End/database.php";
 
 $username = $_POST['username'];
 $email = $_POST['email'];
@@ -48,7 +48,7 @@ $conn->close();
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" type="text/css" href="../static/register.css">
+    <link rel="stylesheet" type="text/css" href="/static/register.css">
     <title>ConnectThread - Register</title>
 </head>
 <body>
@@ -74,7 +74,7 @@ $conn->close();
             <input type="submit" value="Register">
         </div>
         <div class="login-link">
-            <p>Already have an account? <a href="login.html">Log in</a></p>
+            <p>Already have an account? <a href="login.php">Log in</a></p>
         </div>
     </form>
 </body>
