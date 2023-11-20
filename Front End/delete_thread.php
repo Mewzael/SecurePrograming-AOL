@@ -34,10 +34,10 @@ if (isset($_SESSION['auth']) && $_SESSION['auth'] === 1) {
                 echo "You don't have permission to delete this thread.";
             }
         } else {
-            echo "Thread not found or already deleted.";
+            echo '<script>alert(\'Thread not found or already deleted or Unauthorized.\'); window.location.href="index.php"</script>';
         }
     } else {
-        echo "Thread ID not provided.";
+        echo '<script>alert(\'Thread not found or already deleted or Unauthorized.\'); window.location.href="index.php"</script>';
     }
 } else {
     echo "You are not authenticated.";
