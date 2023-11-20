@@ -1,6 +1,3 @@
-<?php
-?>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -40,28 +37,32 @@
                 <h2>Main Discussion Thread</h2>
             </div>
             <div class="forum-box">
-                <!-- Display a list of threads -->
-                <div class="thread">
-                    <div class="thread-info">
-                        <h3>Thread Title 1</h3>
-                        <p>User123</p>
-                    </div>
-                <p>This is a discussion about...</p>
-                </div>
-            <div class="thread">
-                <div class="thread-info">
-                    <h3>Thread Title 2</h3>
-                    <p>AnotherUser</p>
-                </div>
-            <p>Join us to talk about...</p>
-            </div>
-            <div class="thread">
-                <div class="thread-info">
-                    <h3>Thread Title 3</h3>
-                    <p>Mewz</p>
-                </div>
-            <p>what is your opinion on us...</p>
-            </div>
+                <?php
+
+                include "../Back End/database.php";
+
+                global $db;
+
+                $query = "SELECT title, content, username FROM thread JOIN users ON thread.user_id = users.id WHERE deleted_at IS NULL;";
+                $stmt = $db->prepare($query);
+                $stmt->execute();
+                $result = $stmt->get_result();
+
+                if ($result->num_rows > 0) {
+                    while ($row = $result->fetch_assoc()) {
+                        echo("<script>console.log('PHP: " . json_encode($row) . "');</script>");
+                        echo '<div class="thread">';
+                        echo '<div class="thread-info">';
+                        echo '<h3>' . $row["title"] . '</h3>';
+                        echo '<p>' . $row["username"] . '</p>';
+                        echo '</div>';
+                        echo '<p>' . $row["content"] . '</p>';
+                        echo '</div>';
+                    }
+                }
+
+                $db->close();
+                ?>
         </div>
     </section>
     </main>

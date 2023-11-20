@@ -42,7 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         error_log($error_message, 0);
 
-        header("Location: registration.php?error=registration_failed&message=" . urlencode($error_message));
+        header("Location: login.php" . urlencode($error_message));
     }
 
     $stmt->close();
