@@ -1,7 +1,7 @@
 <?php
 session_start();
-error_reporting(0);
-include "../Back End/database.php";
+// error_reporting(0);
+include "../BackEnd/database.php";
 
 global $db;
 
@@ -30,7 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_SESSION['auth']) && $_SESSIO
     }
 
     $db->close();
-    header("Location: index.php");
+    header("Location: ./index.php");
 } else {
     echo "You are not authenticated.";
 }

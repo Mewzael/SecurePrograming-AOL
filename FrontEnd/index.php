@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <title>ConnectThread</title>
-    <link rel="stylesheet" href="./static/index.css">
+    <link rel="stylesheet" href="../static/index.css">
 </head>
 <body>
 <header>
@@ -13,10 +13,10 @@
 
             session_start();
             if (isset($_SESSION['auth']) && $_SESSION['auth'] === 1) {
-                echo '<a href="logout.php">Logout</a>';
+                echo '<a href="./logout.php">Logout</a>';
             } else {
-                echo '<a href="login.php">Login</a>
-                            <a href="registration.php">Register</a>';
+                echo '<a href="./login.php">Login</a>
+                            <a href="./registration.php">Register</a>';
                 }
 
             ?>
@@ -48,12 +48,12 @@
         </div>
         <div class="forum-box">
             <?php
-            error_reporting(0);
-            include "../Back End/database.php";
+            // error_reporting(0);
+            include "../BackEnd/database.php";
 
             global $db;
 
-            $query = "SELECT thread_id, title, content, username FROM thread JOIN users ON thread.user_id = users.id WHERE deleted_at IS NULL;";
+            $query = "SELECT thread_id, title, content, username FROM threads JOIN users ON threads.user_id = users.id WHERE deleted_at IS NULL;";
             $stmt = $db->prepare($query);
             $stmt->execute();
             $result = $stmt->get_result();
@@ -64,14 +64,15 @@
                     echo '<div class="thread">';
                     echo '<div class="thread-info">';
                     echo '<h3>' . htmlspecialchars($row["title"]) . '</h3>';
-                    echo '<p>' . htmlspecialchars($row["username"]) . '</p>';
                     echo '</div>';
                     echo '<p>' . htmlspecialchars($row["content"]) . '</p>';
+                    echo '<p>' . htmlspecialchars($row["username"]) . '</p>';
                     if (isset($_SESSION['auth']) && $_SESSION['auth'] === 1) {
                         if ($_SESSION['username'] == $row['username']) {
-                            echo '<a href="./delete_thread.php?thread_id=' . $row['thread_id'] . '">DELETE</a>';
-                            echo '<br>';
-                            echo '<a href="detail_thread.php?thread_id=' . $row['thread_id'] . '">EDIT</a>';
+                            echo '<div class="thread-buttons">';
+                            echo '<a class="edit-button" href="./delete_thread.php?thread_id=' . $row['thread_id'] . '">DELETE</a>';
+                            echo '<a class="delete-button" href="./detail_thread.php?thread_id=' . $row['thread_id'] . '">EDIT</a>';
+                            echo '</div>';
                         }
                     }
                     echo '</div>';

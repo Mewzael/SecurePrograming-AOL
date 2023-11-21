@@ -143,9 +143,6 @@ ul {
     color: #fff;
     margin: 0;
 }
-.thread {
-    border-bottom: 1px solid #ccc;
-}
 
 .thread-info {
     padding-bottom: 5px;
@@ -174,4 +171,34 @@ footer {
     padding: 10px;
     background-color: #1E90FF;
     color: #FFFFFF;
+}
+
+
+.thread-buttons {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.edit-button,
+.delete-button {
+    padding: 8px 12px;
+    margin-left: 10px;
+    text-decoration: none;
+    color: #fff;
+    background-color: #007BFF;
+    border-radius: 4px;
+}
+
+.edit-button:hover,
+.delete-button:hover {
+    background-color: #0056b3;
+}
+
+
+.thread{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1em 1em;
+    border-bottom: 1px solid #ccc;
 }

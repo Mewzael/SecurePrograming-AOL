@@ -1,0 +1,208 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:300);
+
+* {
+    font-family: "Roboto", sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f0f0f0;
+    color: #333;
+    font-size: 16px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    background-color: #1E90FF;
+    color: #FFFFFF;
+    text-align: center;
+    padding: 28px;
+}
+
+.top-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    font-size: 20px;
+    text-align: left;
+}
+
+nav {
+    background-color: #1E90FF;
+    text-align: right;
+}
+
+nav ul {
+    list-style: none;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #FFFFFF;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+.header-buttons a {
+    color: #FFFFFF;
+    text-decoration: none;
+    margin-left: 20px;
+}
+
+main {
+    flex-grow: 1;
+    padding: 20px;
+}
+
+.intro {
+    background-color: #FFFFFF;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+}
+
+.intro h2 {
+    font-size: 24px;
+    text-align: left;
+}
+
+.create-thread-button {
+    padding: 10px 20px;
+    background-color: #1E90FF;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    float: right;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+}
+
+.create-thread-button:hover {
+    background-color: #0088ff;
+}
+
+.intro-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+}
+
+.features {
+    margin-top: 20px;
+}
+
+.features h3 {
+    font-size: 20px;
+}
+
+ul {
+    list-style-type: disc;
+    margin-left: 20px;
+}
+
+.forum {
+    margin-top: 20px;
+}
+
+.forum-box {
+    border: 1px solid #ccc;
+    display: flex;
+    flex-direction: column;
+    background-color: #f8f8f8;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.forum-title {
+    background-color: #1E90FF;
+    padding: 10px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.forum-title h2 {
+    color: #fff;
+    margin: 0;
+}
+.thread {
+    border-bottom: 1px solid #ccc;
+}
+
+.thread-info {
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.thread h3 {
+    color: #333;
+    margin: 0;
+    padding-left: 5px;
+    padding-top: 3px;
+}
+
+.thread p {
+    color: #777;
+    margin: 0;
+    padding-right: 5px;
+    text-align: center;
+}
+
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #1E90FF;
+    color: #FFFFFF;
+}
+
+.thread-buttons {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.edit-button,
+.delete-button {
+    padding: 8px 12px;
+    margin-left: 10px;
+    text-decoration: none;
+    color: #fff;
+    background-color: #007BFF;
+    border-radius: 4px;
+}
+
+.edit-button:hover,
+.delete-button:hover {
+    background-color: #0056b3;
+}
+
+
+/* .thread {
+    position: relative;
+}
+
+.thread-buttons {
+    position: absolute;
+    top: 0;
+    right: 0;
+}

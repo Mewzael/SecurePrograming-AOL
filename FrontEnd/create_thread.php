@@ -1,6 +1,6 @@
 <?php
-error_reporting(0);
-include "../Back End/database.php";
+// error_reporting(0);
+include "../BackEnd/database.php";
 
 global $db;
 
@@ -14,23 +14,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_SESSION['auth']) && $_SESSIO
     $author = $_SESSION["user_id"];;
     $date = date("Y-m-d H:i:s");
 
-    $sql = "INSERT INTO thread (title, content, user_id, created_at) VALUES (?, ?, ?, ?)";
+    $sql = "INSERT INTO threads (title, content, user_id, created_at) VALUES (?, ?, ?, ?)";
     $stmt = $db->prepare($sql);
     $stmt->bind_param("ssss", $threadTitle, $threadContent, $author, $date);
 
     if ($stmt->execute()) {
-        header("Location: registration.php?success=registered");
+        header("Location: ./registration.php?success=registered");
     } else {
         $error_message = "Database error: " . $stmt->error;
 
         error_log($error_message, 0);
 
-        header("Location: registration.php?error=registration_failed&message=" . urlencode($error_message));
+        header("Location: ./registration.php?error=registration_failed&message=" . urlencode($error_message));
     }
 
     $stmt->close();
     $db->close();
-    header("Location: index.php");
+    header("Location: ./index.php");
     exit();
 }
 ?>
@@ -39,12 +39,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_SESSION['auth']) && $_SESSIO
 <html>
 <head>
     <title>Creating Thread...</title>
-    <link rel="stylesheet" href="/static/create.css">
+    <link rel="stylesheet" href="./static/create.css">
 </head>
 <body>
     <section class="create-thread">
     <h2>Create a New Thread</h2>
-        <form action="create_thread.php" method="post">
+        <form action="./create_thread.php" method="post">
             <label for="thread-title">Title:</label>
             <input type="text" id="thread-title" name="thread-title" required>
 

@@ -1,6 +1,8 @@
 <?php
-error_reporting(0);
-include "../Back End/database.php";
+// error_reporting(0);
+mysqli_report(MYSQLI_REPORT_ALL);
+
+include "../BackEnd/database.php";
 
 global $db;
 
@@ -10,7 +12,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST['email'];
     $password = $_POST['password'];
     $confirmPassword = $_POST['confirm-password'];
-
 // Perform input validation
     if (empty($username) || empty($email) || empty($password) || empty($confirmPassword)) {
         header("Location: registration.php?error=empty_fields");
@@ -34,15 +35,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $sql = "INSERT INTO users (username, email, password) VALUES (?, ?, ?)";
     $stmt = $db->prepare($sql);
     $stmt->bind_param("sss", $username, $email, $hashedPassword);
-
+    
     if ($stmt->execute()) {
-        header("Location: registration.php?success=registered");
+        header("Location: ./registration.php?success=registered");
     } else {
         $error_message = "Database error: " . $stmt->error;
 
         error_log($error_message, 0);
 
-        header("Location: login.php" . urlencode($error_message));
+        header("Location: ./login.php" . urlencode($error_message));
     }
 
     $stmt->close();
@@ -57,7 +58,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <title>ConnectThread - Register</title>
 </head>
 <body>
-<form class="register-page" action="registration.php" method="post">
+<form class="register-page" action="./registration.php" method="post">
     <h2>Register for ConnectThread</h2>
     <div>
         <label for="username">Username:</label>
@@ -80,7 +81,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <input type="submit" value="Register">
     </div>
     <div class="login-link">
-        <p>Already have an account? <a href="login.php">Log in</a></p>
+        <p>Already have an account? <a href="./login.php">Log in</a></p>
     </div>
 </form>
 </body>

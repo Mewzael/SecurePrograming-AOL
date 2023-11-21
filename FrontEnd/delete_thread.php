@@ -1,8 +1,8 @@
 <?php
 session_start();
-error_reporting(0);
+// error_reporting(0);
 
-include "../Back End/database.php";
+include "../BackEnd/database.php";
 
 global $db;
 
@@ -10,7 +10,6 @@ if (isset($_SESSION['auth']) && $_SESSION['auth'] === 1) {
     // Check if the user is logged in
     if (isset($_GET['thread_id'])) {
         $thread_id = $_GET['thread_id'];
-
 
         $query = "SELECT thread_id, user_id FROM thread WHERE deleted_at IS NULL AND thread_id = ? AND user_id = ?;";
         $stmt = $db->prepare($query);
@@ -28,7 +27,7 @@ if (isset($_SESSION['auth']) && $_SESSION['auth'] === 1) {
                 $deleteStmt->bind_param("i", $thread_id);
                 $deleteStmt->execute();
 
-                header("Location: index.php");
+                header("Location: ./index.php");
                 exit();
             } else {
                 echo "You don't have permission to delete this thread.";

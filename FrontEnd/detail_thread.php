@@ -1,8 +1,8 @@
 <?php
 session_start();
-error_reporting(0);
+// error_reporting(0);
 
-include "../Back End/database.php";
+include "../BackEnd/database.php";
 
 global $db;
 

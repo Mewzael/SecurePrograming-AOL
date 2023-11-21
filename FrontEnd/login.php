@@ -1,13 +1,13 @@
 <?php
-error_reporting(0);
-include "../Back End/database.php";
+// error_reporting(0);
+include "../BackEnd/database.php";
 
 global $db;
 
 session_start();
 
 if (isset($_SESSION['auth']) && $_SESSION['auth'] === 1) {
-    header("Location: index.php");
+    header("Location: ./index.php");
     exit();
 }
 
@@ -36,7 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $stmt = $db->prepare($query);
                 $stmt->bind_param("s", $username);
                 $stmt->execute();
-                header("Location: index.php");
+                header("Location: ./index.php");
             } else {
                 $row["attempt"] = $row["attempt"] + 1;
                 $query = "UPDATE users SET attempt = ?, last_login_time = CURRENT_TIMESTAMP WHERE username = ?;";
@@ -63,7 +63,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <title>ConnectThread</title>
 </head>
 <body>
-<form class="login-page" action="login.php" method="post">
+<form class="login-page" action="./login.php" method="post">
     <h2>Welcome to ConnectThread!</h2>
     <div>
         <label for="username">Username:</label>
@@ -77,7 +77,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <input type="submit" value="Login">
     </div>
     <div class="register-link">
-        <p>Haven't registered yet? <a href="registration.php">Register now</a></p>
+        <p>Haven't registered yet? <a href="./registration.php">Register now</a></p>
     </div>
 </form>
 </body>
