@@ -48,6 +48,7 @@
         </div>
         <div class="forum-box">
             <?php
+            error_reporting(0);
             include "../Back End/database.php";
 
             global $db;
