@@ -42,4 +42,6 @@ if (isset($_SESSION['auth']) && $_SESSION['auth'] === 1) {
 } else {
     echo "You are not authenticated.";
 }
+$db->close();
+
 ?>
