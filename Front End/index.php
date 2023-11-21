@@ -59,13 +59,13 @@
 
             if ($result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {
-                    echo("<script>console.log('PHP: " . json_encode($row) . "');</script>");
+//                    echo("<script>console.log('PHP: " . json_encode($row) . "');</script>");
                     echo '<div class="thread">';
                     echo '<div class="thread-info">';
-                    echo '<h3>' . $row["title"] . '</h3>';
-                    echo '<p>' . $row["username"] . '</p>';
+                    echo '<h3>' . htmlspecialchars($row["title"]) . '</h3>';
+                    echo '<p>' . htmlspecialchars($row["username"]) . '</p>';
                     echo '</div>';
-                    echo '<p>' . $row["content"] . '</p>';
+                    echo '<p>' . htmlspecialchars($row["content"]) . '</p>';
                     if (isset($_SESSION['auth']) && $_SESSION['auth'] === 1) {
                         if ($_SESSION['username'] == $row['username']) {
                             echo '<a href="./delete_thread.php?thread_id=' . $row['thread_id'] . '">DELETE</a>';

@@ -20,7 +20,6 @@ if (isset($_SESSION['auth']) && $_SESSION['auth'] === 1) {
             $row = $result->fetch_assoc();
             if ($_SESSION['user_id'] == $row['user_id']) {
                 $temp = $row;
-                echo("<script>console.log('PHP1231231 " . json_encode($temp) . "');</script>");
             } else {
                 echo "You don't have permission to delete this thread.";
             }

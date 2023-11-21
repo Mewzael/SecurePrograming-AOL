@@ -14,9 +14,6 @@ if (isset($_SESSION['auth']) && $_SESSION['auth'] === 1) {
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST["username"];
     $password = $_POST["password"];
-    $time_threshold = 60 * 1;
-    $timezone = new DateTimeZone('Asia/Jakarta');
-
 
     $query = "SELECT password, attempt, last_login_time, id, username FROM users WHERE username=?;";
     $stmt = $db->prepare($query);
