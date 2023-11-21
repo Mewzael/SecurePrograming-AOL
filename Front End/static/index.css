@@ -169,6 +169,26 @@ ul {
     text-align: center;
 }
 
+.thread-buttons {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.edit-button,
+.delete-button {
+    padding: 8px 12px;
+    margin-left: 10px;
+    text-decoration: none;
+    color: #fff;
+    background-color: #007BFF;
+    border-radius: 4px;
+}
+
+.edit-button:hover,
+.delete-button:hover {
+    background-color: #0056b3;
+}
+
 footer {
     text-align: center;
     padding: 10px;

@@ -69,9 +69,8 @@
                     echo '<p>' . htmlspecialchars($row["content"]) . '</p>';
                     if (isset($_SESSION['auth']) && $_SESSION['auth'] === 1) {
                         if ($_SESSION['username'] == $row['username']) {
-                            echo '<a href="./delete_thread.php?thread_id=' . $row['thread_id'] . '">DELETE</a>';
-                            echo '<br>';
-                            echo '<a href="detail_thread.php?thread_id=' . $row['thread_id'] . '">EDIT</a>';
+                            echo '<a class="edit-button" href="./delete_thread.php?thread_id=' . $row['thread_id'] . '">DELETE</a>';
+                            echo '<a class="delete-button" href="detail_thread.php?thread_id=' . $row['thread_id'] . '">EDIT</a>';
                         }
                     }
                     echo '</div>';
