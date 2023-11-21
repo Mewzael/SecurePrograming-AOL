@@ -20,32 +20,36 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->bind_param("s", $username);
     $stmt->execute();
     $result = $stmt->get_result();
-    $row = $result->fetch_assoc();
+    if ($result->num_rows == 1) {
+        $row = $result->fetch_assoc();
 
-    $dbTimestamp = strtotime($row['last_login_time']);
-    $currentTimestamp = time();
-    $timeDifference = ($currentTimestamp - $dbTimestamp + 21600);
+        $dbTimestamp = strtotime($row['last_login_time']);
+        $currentTimestamp = time();
+        $timeDifference = ($currentTimestamp - $dbTimestamp + 21600);
 
-    if ($timeDifference >= 60) {
-        if ($row && password_verify($password, $row["password"])) {
-            $_SESSION["auth"] = 1;
-            $_SESSION["user_id"] = $row["id"];
-            $_SESSION["username"] = $row["username"];
-            $query = "UPDATE users SET attempt = 0, last_login_time = CURRENT_TIMESTAMP WHERE username = ?;";
-            $stmt = $db->prepare($query);
-            $stmt->bind_param("s", $username);
-            $stmt->execute();
-            header("Location: index.php");
-        } else {
-            $row["attempt"] = $row["attempt"] +  1;
-            $query = "UPDATE users SET attempt = ?, last_login_time = CURRENT_TIMESTAMP WHERE username = ?;";
-            $stmt = $db->prepare($query);
-            $stmt->bind_param("is", $row['attempt'],$username);
-            $stmt->execute();
-            echo '<script>alert(\'Wrong username or password\')</script>';
+        if ($row['attempt'] < 3 || $timeDifference >= 60) {
+            if ($row && password_verify($password, $row["password"])) {
+                $_SESSION["auth"] = 1;
+                $_SESSION["user_id"] = $row["id"];
+                $_SESSION["username"] = $row["username"];
+                $query = "UPDATE users SET attempt = 0, last_login_time = CURRENT_TIMESTAMP WHERE username = ?;";
+                $stmt = $db->prepare($query);
+                $stmt->bind_param("s", $username);
+                $stmt->execute();
+                header("Location: index.php");
+            } else {
+                $row["attempt"] = $row["attempt"] + 1;
+                $query = "UPDATE users SET attempt = ?, last_login_time = CURRENT_TIMESTAMP WHERE username = ?;";
+                $stmt = $db->prepare($query);
+                $stmt->bind_param("is", $row['attempt'], $username);
+                $stmt->execute();
+                echo '<script>alert(\'Wrong username or password\')</script>';
+            }
+        } else if ($row['attempt'] >= 3 && $timeDifference < 60) {
+            echo '<script>alert(\'Too many login attempts. Please try again later\')</script>';
         }
-    } else if ($row['attempt'] >= 3 && $timeDifference < 60 ) {
-        echo '<script>alert(\'Too many login attemps. Please try again later\')</script>';
+    } else {
+        echo '<script>alert(\'Wrong username or password\')</script>';
     }
     $db->close();
 }
