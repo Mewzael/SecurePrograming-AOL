@@ -51,6 +51,11 @@
             error_reporting(0);
             include "../Back End/database.php";
 
+            header_remove('X-Powered-By');
+            header('X-XSS-Protection: 1; mode=block');
+            header('X-Frame-Options: DENY, SAMEORIGIN');
+            header('Set-Cookie: SameSite=Strict');
+
             global $db;
 
             $query = "SELECT thread_id, title, content, username FROM thread JOIN users ON thread.user_id = users.id WHERE deleted_at IS NULL;";

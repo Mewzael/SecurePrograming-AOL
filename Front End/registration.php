@@ -2,6 +2,11 @@
 error_reporting(0);
 include "../Back End/database.php";
 
+header_remove('X-Powered-By');
+header('X-XSS-Protection: 1; mode=block');
+header('X-Frame-Options: DENY, SAMEORIGIN');
+header('Set-Cookie: SameSite=Strict');
+
 global $db;
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
